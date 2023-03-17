@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+<h1 align="center">Passwords</h1>
+
+
+{% for note in user.notes %}
+<br>
+<div class = "form-group" id="notes">
+    
+<li class="list-group-item">Name: {{ note.name }} </li>
+   
+<li class="list-group-item">Username: {{ note.username }} </li>
+<li class="list-group-item" id="pass" type="password">
+    <input type="password" value= {{ note.password }}  id={{ note.id }}1>
+    <input type="checkbox" onclick="showPasswd({{ note.id }}1)">Show Password 
+    <button type="button" class="btn btn-outline-dark btn-sm" onclick="copypass({{ note.id }}1)">copy</button>      
+</li>
+<button type="button" class="close" onclick="deleteNote({{ note.id }})">
+    <span aria-hidden="true">&times;</span>
+</button>
+<br>
+
+
+</div>
+    
+{% endfor %}
+    
+ 
+
+</ul>
+<form method="POST">
+    <div> <input name="name" id="name" class="form-control" placeholder="name"></div>   
+    <div> <input name="username" id="username" class="form-control" placeholder="login"></div>   
+    <div><input type="password" class="form-control" id="password" name="password" placeholder="Enter password"></div>
+    <br>
+    <div align="center">
+        <button type="submit" class="btn btn-dark ">Save Note</button>
+    </div>
+</form>
+
+
+{% endblock %}
