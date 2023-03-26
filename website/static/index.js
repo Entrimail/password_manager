@@ -19,13 +19,8 @@ function showPasswd(note) {
     }
 
 
-  function copypass(note) {
-    /* Get the text field */
+  function copyPasswd(note) {
     var copyText = document.getElementById(note);
-  
-    /* Select the text field */
-    copyText.select();
-  
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
+     copyText.select();
+     document.execCommand("copy");
   }

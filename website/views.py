@@ -14,7 +14,10 @@ def home():
         name = request.form.get('name')
         username = request.form.get('username') 
         password = request.form.get('password')
-        if len(name) < 4 or len(username) < 4 or len(password) < 4:
+        note = Note.query.filter_by(name=name, username=username, password=password).first()
+        if note:
+            flash('Note already exist', category='e')
+        elif len(name) < 4 or len(username) < 4 or len(password) < 4:
             flash('Note is too short', category='e')
         else:
             new_note = Note(name=name, username=username, password=password, user_id=current_user.id)
