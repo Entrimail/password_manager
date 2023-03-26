@@ -21,6 +21,6 @@ function showPasswd(note) {
 
   function copyPasswd(note) {
     var copyText = document.getElementById(note);
-     copyText.select();
-     document.execCommand("copy");
+     copyText.select()
+      navigator.clipboard.writeText(copyText.value);
   }
