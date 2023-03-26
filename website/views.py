@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, request, flash, jsonify
-from flask_login import  login_required, current_user
+from flask_login import login_required, current_user
 from .models import db, Note
 import json
 
 
 views = Blueprint('views', __name__)
+
 
 @views.route('/', methods=['GET', 'POST'])
 @login_required
@@ -12,7 +13,7 @@ def home():
     if request.method == 'POST':
         name = request.form.get('name')
         username = request.form.get('username') 
-        password =  request.form.get('password')
+        password = request.form.get('password')
         if len(name) < 4 or len(username) < 4 or len(password) < 4:
             flash('Note is too short', category='e')
         else:

@@ -8,21 +8,17 @@ DB_NAME = "database.db"
 
 
 def create_app():
-    
     app = Flask(__name__)
     with app.app_context():
         app.config['SECRET_KEY'] = ''
-        app.config['SQLALCHEMY_DATABASE_URI']  = f'sqlite:///{DB_NAME}'
+        app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
         db.init_app(app)
-
-    
 
         from .views import views
         from .auth import auth
 
         app.register_blueprint(views, url_prefix='/')
         app.register_blueprint(auth, url_prefix='/')
-
 
         from .models import User, Note
 
@@ -33,8 +29,8 @@ def create_app():
         login_manager.init_app(app)
 
         @login_manager.user_loader
-        def load_user(id):
-            return User.query.get(int(id))
+        def load_user(identity):
+            return User.query.get(int(identity))
 
         return app
 
