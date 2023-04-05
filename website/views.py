@@ -17,8 +17,14 @@ def home():
         note = Note.query.filter_by(name=name, username=username, password=password).first()
         if note:
             flash('Note already exist', category='e')
-        elif len(name) < 4 or len(username) < 4 or len(password) < 4:
-            flash('Note is too short', category='e')
+        elif len(name) < 2:
+            flash('Note name is too short, minimum length is 2', category='e')
+            return redirect(url_for('views.home'))
+        elif len(username) < 4:
+            flash('Username is too short, minimum length is 4', category='e')
+            return redirect(url_for('views.home'))
+        elif len(password) < 6:
+            flash('Password is too short, minimum length is 6', category='e')
             return redirect(url_for('views.home'))
         else:
             existing_note = Note.query.filter_by(name=name, username=username, password=password,
