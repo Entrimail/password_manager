@@ -19,8 +19,12 @@ function showPasswd(note) {
     }
 
 
-  function copyPasswd(note) {
+ function copyPasswd(note) {
     var copyText = document.getElementById(note);
-     copyText.select()
-      navigator.clipboard.writeText(copyText.value);
+    copyText.select()
+    navigator.clipboard.writeText(copyText.value);
   }
+
+setTimeout(function() {
+    $('.alert').alert('close');
+}, 3000);
