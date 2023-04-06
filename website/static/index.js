@@ -32,31 +32,24 @@ setTimeout(function() {
 
 
 function updateNote(noteId) {
-
-  var username = document.getElementById('username_to_update').value;
-  var password = document.getElementById('password_to_update').value;
-
+  var username = document.getElementById('username_to_update_' + noteId).value;
+  var password = document.getElementById('password_to_update_' + noteId).value;
 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/update-note', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      document.getElementById('username_to_update').value = username;
-      document.getElementById('password_to_update').value = password;
-      $('#myModal').modal('hide');
-
-       location.reload();
+      document.getElementById('username_to_update_' + noteId).value = username;
+      document.getElementById('password_to_update_' + noteId).value = password;
+      $('#myModal' + noteId).modal('hide');
+      location.reload();
     }
-   location.reload();
-   document.getElementById('username_to_update').value = username;
-   document.getElementById('password_to_update').value = password;
   };
   xhr.send(JSON.stringify({
     'noteId': noteId,
     'username': username,
     'password': password
   }));
-
 }
 
