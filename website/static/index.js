@@ -42,11 +42,15 @@ function updateNote(noteId) {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {
-
+      document.getElementById('username_to_update').value = username;
+      document.getElementById('password_to_update').value = password;
       $('#myModal').modal('hide');
 
        location.reload();
     }
+   location.reload();
+   document.getElementById('username_to_update').value = username;
+   document.getElementById('password_to_update').value = password;
   };
   xhr.send(JSON.stringify({
     'noteId': noteId,
