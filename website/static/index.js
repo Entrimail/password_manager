@@ -28,3 +28,31 @@ function showPasswd(note) {
 setTimeout(function() {
     $('.alert').alert('close');
 }, 3000);
+
+
+
+function updateNote(noteId) {
+
+  var username = document.getElementById('username_to_update').value;
+  var password = document.getElementById('password_to_update').value;
+
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/update-note', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+
+      $('#myModal').modal('hide');
+
+       location.reload();
+    }
+  };
+  xhr.send(JSON.stringify({
+    'noteId': noteId,
+    'username': username,
+    'password': password
+  }));
+
+}
+

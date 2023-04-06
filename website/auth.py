@@ -45,12 +45,16 @@ def sign_up():
 
         if user:
             flash('Username already exist', category='e')
+            return redirect(url_for('auth.sign_up'))
         elif len(username) < 4:
             flash('Username must be greater than 4 characters', category='e')
+            return redirect(url_for('auth.sign_up'))
         elif password1 != password2:
             flash('Passwords dont match', category='e')
-        elif len(password1) < 8:
-            flash('Password must be greater than 8 characters', category='e')
+            return redirect(url_for('auth.sign_up'))
+        elif len(password1) < 6:
+            flash('Password must be greater than 5 characters', category='e')
+            return redirect(url_for('auth.sign_up'))
         else:
             new_user = User(username=username, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)

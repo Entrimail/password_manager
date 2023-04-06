@@ -51,3 +51,31 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
     return jsonify({})
+
+
+@views.route('/update-note', methods=['POST'])
+def update_note():
+    note_data = json.loads(request.data)
+    note_id = note_data['noteId']
+    note = Note.query.get(note_id)
+    if note and note.user_id == current_user.id:
+        if note_data['username'] != note.username or note_data['password'] != note.password:
+            if len(note_data['username']) < 2:
+                flash('Username is too short, minimum length is 4', category='e')
+                return url_for('views.home')
+            elif len(note_data['password']) < 6:
+                flash('Password is too short, minimum length is 6', category='e')
+                return url_for('views.home')
+            else:
+                Note.query.filter_by(id=note_id).update({"username": note_data['username']})
+                Note.query.filter_by(id=note_id).update({"password": note_data['password']})
+                db.session.commit()
+        flash('Note has been updated', category='s')
+        return redirect(url_for('views.home'))
+    else:
+        flash("Note hasn't been updated", category='e')
+        return redirect(url_for('views.home'))
+
+
+
+
