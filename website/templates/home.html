@@ -9,9 +9,10 @@
         <button type="button" class="close" onclick="deleteNote({{ note.id }})">
             <span aria-hidden="true">&times;</span>
         </button>
-        <button type="button" class="close" data-toggle="modal" data-target="#myModal{{ note.id }}">
-            <span aria-hidden="true">&#128393;</span>
-        </button>
+        <button type="button" class="close"  onclick="openModal({{ note.id }})">
+    <span aria-hidden="true">&#128393;</span>
+</button>
+
     </div>
 
     <br>
@@ -19,7 +20,7 @@
     <div class = "form-group" id="notes">
         <li class="list-group-item">Name: {{ note.name }} </li>
 
-        <li class="list-group-item" id="old_username">Username: {{ note.username }} </li>
+        <li class="list-group-item" id=2{{ note.id }}>Username: {{note.username}}</li>
         <li class="list-group-item" id="pass" type="password">
             <input type="password" value= {{ note.password }}  id={{ note.id }}1>
             <input type="checkbox" onclick="showPasswd({{ note.id }}1)">Show Password
@@ -41,9 +42,9 @@
                 </button>
         </div>
           <div class="modal-body">
-              <li class="list-group-item"><input type="text" name="username" id="username_to_update_{{ note.id }}" value= {{ note.username }}> </li>
+              <li class="list-group-item"><input type="text" name="username" id="username_to_update_{{ note.id }}" value="12"> </li>
               <li class="list-group-item"  type="password">
-              <input type="text" name="password"  id="password_to_update_{{ note.id }}" value= {{ note.password }}>
+              <input type="text" name="password"  id="password_to_update_{{ note.id }}" value="12">
               </li>
 
         </div>
