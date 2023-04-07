@@ -9,20 +9,20 @@
         <button type="button" class="close" onclick="deleteNote({{ note.id }})">
             <span aria-hidden="true">&times;</span>
         </button>
-        <button type="button" class="close"  onclick="openModal({{ note.id }})">
-    <span aria-hidden="true">&#128393;</span>
-</button>
+        <button type="button" class="close" onclick="openModal({{ note.id }})">
+            <span aria-hidden="true">&#128393;</span>
+        </button>
 
     </div>
 
     <br>
 
-    <div class = "form-group" id="notes">
-        <li class="list-group-item">Name: {{ note.name }} </li>
+    <div class="form-group" id="notes">
+        <li class="list-group-item">Name: {{ note.name }}</li>
 
         <li class="list-group-item" id=2{{ note.id }}>Username: {{note.username}}</li>
         <li class="list-group-item" id="pass" type="password">
-            <input type="password" value= {{ note.password }}  id={{ note.id }}1>
+            <input type="password" value={{ note.password }} id={{ note.id }}1>
             <input type="checkbox" onclick="showPasswd({{ note.id }}1)">Show Password
             <button type="button" class="btn btn-outline-dark btn-sm" onclick="copyPasswd({{ note.id }}1)">copy</button>
         </li>
@@ -32,36 +32,41 @@
 
 </div>
 
-<div class="modal fade" id="myModal{{ note.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal{{ note.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{ note.name }}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ note.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-        </div>
-          <div class="modal-body">
-              <li class="list-group-item"><input type="text" name="username" id="username_to_update_{{ note.id }}" value="12"> </li>
-              <li class="list-group-item"  type="password">
-              <input type="text" name="password"  id="password_to_update_{{ note.id }}" value="12">
-              </li>
+            </div>
+            <div class="modal-body">
+                <li class="list-group-item"><input type="text" name="username" id="username_to_update_{{ note.id }}">
+                </li>
+                <li class="list-group-item" type="password">
+                    <input type="password" name="password" id="password_to_update_{{ note.id }}">
+                    <input type="checkbox" onclick="showPasswd('password_to_update_{{ note.id }}')">Show Password
+                </li>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" id="save-changes-btn" onclick="updateNote({{ note.id }})">Save changes</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" id="save-changes-btn" onclick="updateNote({{ note.id }})">
+                    Save changes
+                </button>
 
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
 {% endfor %}
 
 
 <form method="POST" autocomplete="off">
-    <div> <input name="name" id="name" class="form-control" placeholder="name"><br></div>
-    <div> <input name="username" id="username" class="form-control" placeholder="login"><br></div>
+    <div><input name="name" id="name" class="form-control" placeholder="name"><br></div>
+    <div><input name="username" id="username" class="form-control" placeholder="login"><br></div>
     <div><input type="password" class="form-control" id="password" name="password" placeholder="Enter password"></div>
     <br>
     <div align="center">

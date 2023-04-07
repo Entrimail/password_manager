@@ -61,11 +61,11 @@ function updateNote(noteId) {
 }
 
 function openModal(noteId) {
-  var username = document.getElementById('2'+noteId).textContent.slice(9).trim();
-  var password = document.getElementById(noteId+'1').value;
-  document.getElementById('username_to_update_'+noteId).value = username;
-  document.getElementById('password_to_update_'+noteId).value = password;
-  $('#myModal' + noteId).modal('show');
+    var username = document.getElementById('2'+noteId).textContent.slice(9).trim();
+    var password = document.getElementById(noteId+'1').value;
+    document.getElementById('username_to_update_'+noteId).value = username;
+    document.getElementById('password_to_update_'+noteId).value = password;
+    $('#myModal' + noteId).modal('show');
 
 }
 
