@@ -57,7 +57,6 @@ def delete_note():
 @views.route('/update-note', methods=['POST'])
 def update_note():
     note_data = json.loads(request.data)
-    print(note_data)
     if len(note_data['username']) < 4:
         flash('Username is too short, minimum length is 4', category='e')
     elif len(note_data['password']) < 6:
