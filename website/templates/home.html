@@ -17,20 +17,24 @@
 
     <br>
     <div class="form-group" id="notes">
-        <li class="list-group-item">
-        <h5 align="center">{{ note.name }}</h5></li>
-        <li class="list-group-item" id=2{{ note.id }}>Username: {{note.username}}</li>
-        <li class="list-group-item" id="pass" type="password">
-            <input type="password" value={{ note.password }} id={{ note.id }}1>
+        <li class="list-group-item"><h4 align="center">{{ note.name }}</h4></li>
+        <li class="list-group-item"><label id=2{{ note.id }}>Username: {{note.username}}</label>
+            <button type="button" class="btn btn-outline-dark btn-sm" onclick="copyUsername(2{{ note.id }})">copy
+            </button></li>
+            <li class="list-group-item"><input type="password" value={{ note.password }} id={{ note.id }}1>
             <input type="checkbox" onclick="showPasswd({{ note.id }}1)">Show Password
-            <button type="button" class="btn btn-outline-dark btn-sm" onclick="copyPasswd({{ note.id }}1)">copy</button>
-        </li>
-
+            <button type="button" class="btn btn-outline-dark btn-sm" onclick="copyPasswd({{ note.id }}1)">copy
+            </button>
+            </li>
         <br>
     </div>
         </div>
 
-
+<style>
+    .btn:focus{
+        box-shadow: none;
+    }
+</style>
 <div class="modal fade" id="myModal{{ note.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -64,9 +68,13 @@
 
 
 <form method="POST" autocomplete="off">
-    <div><input name="name" id="name" class="form-control" placeholder="name"><br></div>
-    <div><input name="username" id="username" class="form-control" placeholder="login"><br></div>
-    <div><input type="password" class="form-control" id="password" name="password" placeholder="Enter password"></div>
+    <li class="list-group-item list-group-item-outline-red">
+    <div class="input-group input-group mb-3">
+    <input name="name" id="name" class="form-control" placeholder="name"></div>
+    <div class="input-group mb-3"><input name="username" id="username" class="form-control" placeholder="login"></div>
+    <div class="input-group mb-3"><input type="password" class="form-control" id="password" name="password"
+                                         placeholder="Enter password"></div>
+    </li>
     <br>
     <div align="center">
         <button type="submit" class="btn btn-dark">Save Note</button>

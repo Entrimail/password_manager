@@ -24,6 +24,10 @@ function showPasswd(note) {
     copyText.select()
     navigator.clipboard.writeText(copyText.value);
   }
+ function copyUsername(note) {
+    var copyText = document.getElementById(note);
+    navigator.clipboard.writeText(copyText.textContent.slice(10).trim());
+  }
 
 setTimeout(function() {
     $('.alert').alert('close');
@@ -61,7 +65,7 @@ function updateNote(noteId) {
 }
 
 function openModal(noteId) {
-    var username = document.getElementById('2'+noteId).textContent.slice(9).trim();
+    var username = document.getElementById('2'+noteId).textContent.slice(10).trim();
     var password = document.getElementById(noteId+'1').value;
     document.getElementById('username_to_update_'+noteId).value = username;
     document.getElementById('password_to_update_'+noteId).value = password;
