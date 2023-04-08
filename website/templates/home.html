@@ -16,10 +16,9 @@
     </div>
 
     <br>
-
     <div class="form-group" id="notes">
-        <li class="list-group-item">Name: {{ note.name }}</li>
-
+        <li class="list-group-item">
+        <h5 align="center">{{ note.name }}</h5></li>
         <li class="list-group-item" id=2{{ note.id }}>Username: {{note.username}}</li>
         <li class="list-group-item" id="pass" type="password">
             <input type="password" value={{ note.password }} id={{ note.id }}1>
@@ -29,15 +28,15 @@
 
         <br>
     </div>
+        </div>
 
-</div>
 
 <div class="modal fade" id="myModal{{ note.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{ note.name }}</h5>
+                <h3 class="modal-title w-100 text-center">{{ note.name }}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
