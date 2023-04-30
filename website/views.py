@@ -58,15 +58,16 @@ def delete_note():
 def update_note():
     note_data = json.loads(request.data)
     if len(note_data['username']) < 4:
-        flash('Note has been updated, username is too short, minimum length is 4', category='e')
+        flash("Note hasn't been updated, username is too short, minimum length is 4", category='e')
     elif len(note_data['password']) < 6:
-        flash('Note has been updated, password is too short, minimum length is 6', category='e')
+        flash("Note hasn't been updated, password is too short, minimum length is 6", category='e')
 
     note_id = note_data['noteId']
     note = Note.query.get(note_id)
     if note and note.user_id == current_user.id and len(note_data['username']) >= 4 and len(note_data['password']) >= 6:
         if note.password == note_data['password'] and note.username == note_data['username']:
             return redirect(url_for('view.home'))
+        flash("Note has been updated, successfully", category='s')
         Note.query.filter_by(id=note_id).update({"username": note_data['username']})
         Note.query.filter_by(id=note_id).update({"password": note_data['password']})
         db.session.commit()

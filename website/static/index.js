@@ -19,14 +19,12 @@ function showPasswd(note) {
     }
 
 
- function copyPasswd(note) {
-    var copyText = document.getElementById(note);
-    copyText.select()
-    navigator.clipboard.writeText(copyText.value);
+ function copyPasswd(password) {
+     navigator.clipboard.writeText(password);
+
   }
- function copyUsername(note) {
-    var copyText = document.getElementById(note);
-    navigator.clipboard.writeText(copyText.textContent.slice(10).trim());
+ function copyUsername(username) {
+    navigator.clipboard.writeText(username);
   }
 
 setTimeout(function() {
@@ -38,22 +36,13 @@ setTimeout(function() {
 function updateNote(noteId) {
   var username = document.getElementById('username_to_update_' + noteId).value;
   var password = document.getElementById('password_to_update_' + noteId).value;
-  var old_username = document.getElementById('2' + noteId).value;
-  var old_password = document.getElementById(noteId+'1').value;
-
-
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/update-note', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200)  {
-
-        document.getElementById('2'+noteId).value = username;
-        document.getElementById(noteId+'1').value = password;
         $('#myModal' + noteId).modal('hide');
          }
-
-
       $('#myModal' + noteId).modal('hide');
       location.reload();
     };
@@ -65,11 +54,14 @@ function updateNote(noteId) {
 }
 
 function openModal(noteId) {
-    var username = document.getElementById('2'+noteId).textContent.slice(10).trim();
-    var password = document.getElementById(noteId+'1').value;
-    document.getElementById('username_to_update_'+noteId).value = username;
-    document.getElementById('password_to_update_'+noteId).value = password;
+
     $('#myModal' + noteId).modal('show');
+
+}
+
+function openModal2() {
+
+    $('#myModal').modal('show');
 
 }
 
