@@ -58,13 +58,7 @@
      margin-left: 20px;
      margin-bottom: 20px;}
 
-     .btn-circle {
-        width: 75px;
-        height: 75px;
-        background-image: url('static/btn.png'); background-size: cover; background-position: center center;
 
-
-}
 </style>
 <div class="modal fade" id="myModal{{ note.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -129,14 +123,20 @@
 
             </div>
 
-
         </div>
     </div>
 </div>
+<br>
+
+
 <div align="center">
     <button class="btn btn btn-circle" onclick="openModal2()">
     </button>
 </div>
+<style>.btn-circle {
+        width: 75px;
+        height: 75px;
+        background-image: url('static/btn.png'); background-size: cover; background-position: center center;
 
-
+}</style>
 {% endblock %}
