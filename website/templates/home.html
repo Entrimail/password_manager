@@ -7,29 +7,31 @@
 {% for note in user.notes %}
 
 
-        <div class="card" style="width: 20rem;" id="{{note.id}}">
-            <div class="card-header">
-                <button type="button" class="close" onclick="openModal({{note.id}})">
-                    <span aria-hidden="true">🖉</span>
-                </button>
-                <button type="button" class="close" onclick="deleteNote({{note.id}})">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h3 class="header-title w-100 text-center">{{ note.name }}</h3>
-            </div>
-            <div class="card-body">
-
-                <button type="button" class="btn btn-outline-dark btn-sm float-left"
-                        onclick="copyUsername('{{note.username}}')">
-                    username
-                </button>
-                <button type="button" class="btn btn-outline-dark btn-sm float-right"
-                        onclick="copyPasswd('{{note.password}}')">
-                    password
-                </button>
-
-            </div>
+<div class="content" style="margin:0 auto;">
+    <div class="card" style="width: 15rem;" id="{{note.id}}">
+        <div class="card-header">
+            <button type="button" class="close" onclick="openModal({{note.id}})">
+                <span aria-hidden="true">🖉</span>
+            </button>
+            <button type="button" class="close" onclick="deleteNote({{note.id}})">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h3 class="header-title w-100 text-center">{{ note.name }}</h3>
         </div>
+        <div class="card-body">
+
+            <button type="button" class="btn btn-outline-dark btn-sm float-left"
+                    onclick="copyUsername('{{note.username}}')">
+                username
+            </button>
+            <button type="button" class="btn btn-outline-dark btn-sm float-right"
+                    onclick="copyPasswd('{{note.password}}')">
+                password
+            </button>
+
+        </div>
+    </div>
+</div>
 
 <style>
     .btn:focus{
@@ -54,9 +56,11 @@
         margin-left: 10px;
     }
     .card {display:inline-block;
-     margin-right: 20px;
+     float:none;
+     margin: 0 auto;
      margin-left: 20px;
      margin-bottom: 20px;}
+     .content {display:inline-block;}
 
 
 </style>
@@ -98,7 +102,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title w-100 text-center">Note creation</h3>
+                <h3 class="modal-title w-100 text-center">New note</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
