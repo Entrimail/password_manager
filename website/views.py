@@ -66,11 +66,12 @@ def update_note():
     note = Note.query.get(note_id)
     if note and note.user_id == current_user.id and len(note_data['username']) >= 4 and len(note_data['password']) >= 6:
         if note.password == note_data['password'] and note.username == note_data['username']:
-            return redirect(url_for('view.home'))
-        flash("Note has been updated, successfully", category='s')
-        Note.query.filter_by(id=note_id).update({"username": note_data['username']})
-        Note.query.filter_by(id=note_id).update({"password": note_data['password']})
-        db.session.commit()
+            flash("No changes", category='e')
+        else:
+            flash("Note has been updated, successfully", category='s')
+            Note.query.filter_by(id=note_id).update({"username": note_data['username']})
+            Note.query.filter_by(id=note_id).update({"password": note_data['password']})
+            db.session.commit()
 
     return jsonify({})
 
